@@ -12,8 +12,9 @@ module Mnist
   class InvalidMagic < LoadError; end
 
   class MnistReader
-    def initialize(base_path)
+    def initialize(base_path, one_hot = false)
       @base_path = base_path
+      @one_hot = one_hot
     end
 
     def train
@@ -27,16 +28,18 @@ module Mnist
     private
 
     def load_pair(images, labels)
-      Loader.new(File.join(@base_path, images), File.join(@base_path, labels))
+      Loader.new(File.join(@base_path, images), File.join(@base_path, labels), @one_hot)
     end
   end
+
   class Loader
     IMAGE_FILE_MAGIC = 2051
     LABEL_FILE_MAGIC = 2049
 
-    def initialize(filename_image, filename_label)
+    def initialize(filename_image, filename_label, one_hot)
       @filename_image = filename_image
       @filename_label = filename_label
+      @one_hot = one_hot
       @index = 0
     end
 
@@ -80,12 +83,18 @@ module Mnist
           image_data.map! { |b| b.to_f / 255.0 }
           @index += 1
           images << image_data
-          labels << label_data
+          labels << (@one_hot ? one_hot_transform(label_data) : label_data.to_f)
       end
       [images, labels]
     end
   
     private
+
+    def one_hot_transform(label)
+      arr = Array.new(10) { 0.0 }
+      arr[label] = 1.0
+      arr
+    end
 
     def check_magic(input_file, expected_magic)
       actual_magic = read_magic(input_file)
@@ -168,11 +177,12 @@ module Mnist
 
     filenames.each do |name|
       next if File.exists?(File.join(path, File.basename(name, '.gz')))
+      puts "extracting #{name} ..."
       Zlib::GzipReader.open(File.join(path, name)) do |zipfile|
         outfile = File.open(File.join(path, File.basename(name, '.gz')), 'w')
         outfile.write(zipfile.read)
       end
     end
-    MnistReader.new(path)
+    MnistReader.new(path, one_hot)
   end
 end

@@ -6,12 +6,12 @@ require 'mnist/version'
 Gem::Specification.new do |spec|
   spec.name          = "mnist"
   spec.version       = Mnist::VERSION
-  spec.authors       = ["Kenta Murata", "Joseph Dayo"]
-  spec.email         = ["mrkn@mrkn.jp", "joseph.dayo@gmail.com"]
+  spec.authors       = ["Joseph Dayo"]
+  spec.email         = ["joseph.dayo@gmail.com"]
 
   spec.summary       = %q{Utilities for MNIST handwritten digits data}
   spec.description   = %q{Utilities for MNIST handwritten digits data}
-  spec.homepage      = "https://github.com/mrkn/ruby-mnist"
+  spec.homepage      = "https://github.com/jedld/ruby-mnist"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

@@ -16,5 +16,11 @@ RSpec.describe Mnist do
       expect(minst.test.images.size).to eq(10000)
       expect(minst.test.labels.size).to eq(10000)
     end
+
+    it "allows for on-hot labels" do
+      minst = Mnist.read_data_sets('spec/fixtures/data', one_hot: true)
+      labels = minst.train.next_batch(1)
+      expect(labels.first).to eq([0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0])
+    end
   end
 end

@@ -1,6 +1,8 @@
 # Mnist
 
-Utility ruby gem for easily loading and parsing the MNIST Database of handwritten digits for machine learning purposes
+Utility ruby gem for easily loading and parsing the MNIST Database of handwritten digits for machine learning purposes.
+
+Based on work by kenta murata.
 
 ## Installation
 
