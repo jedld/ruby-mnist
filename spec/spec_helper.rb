@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "mnist"
+require "mnist-learn"
 require 'awesome_print'
 require 'pry-byebug'
 

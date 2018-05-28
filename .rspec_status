@@ -1,4 +1,4 @@
 example_id                  | status | run_time     |
 --------------------------- | ------ | ------------ |
-./spec/mnist_spec.rb[1:1:1] | passed | 6.2 seconds  |
-./spec/mnist_spec.rb[1:1:2] | failed | 2.71 seconds |
+./spec/mnist_spec.rb[1:1:1] | passed | 6.54 seconds |
+./spec/mnist_spec.rb[1:1:2] | failed | 2.62 seconds |

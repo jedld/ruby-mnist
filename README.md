@@ -9,7 +9,7 @@ Based on work by kenta murata.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mnist'
+gem 'mnist-learn'
 ```
 
 And then execute:
@@ -18,14 +18,16 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mnist
+    $ gem install mnist-learn
 
 ## Usage
 
 Load test and training data easily.
 
 ```ruby
-minst = Mnist.read_data_sets('data') # auto download test and training archives and store them in /data
+require 'mnist-learn'
+
+minst = Mnist.read_data_sets('data', one_hot: false) # auto download test and training archives and store them in /data
 images = minst.train.images
 labels = minst.train.labels
 
@@ -43,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/mnist/fork )
+1. Fork it ( https://github.com/[my-github-username]/mnist-learn/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

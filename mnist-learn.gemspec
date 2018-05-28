@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mnist/version'
+require 'mnist-learn/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mnist"
+  spec.name          = "mnist-learn"
   spec.version       = Mnist::VERSION
   spec.authors       = ["Joseph Dayo"]
   spec.email         = ["joseph.dayo@gmail.com"]

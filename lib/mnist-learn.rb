@@ -1,4 +1,4 @@
-require "mnist/version"
+require "mnist-learn/version"
 require 'fileutils'
 require 'zlib'
 require 'net/http'
