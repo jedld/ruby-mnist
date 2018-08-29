@@ -9,3 +9,4 @@
 /spec/fixtures/data
 /tmp/
 /data
+.rspec_status
