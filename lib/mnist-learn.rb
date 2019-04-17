@@ -178,7 +178,7 @@ module Mnist
     Net::HTTP.start(base_url) do |http|
       filenames.each do |name|
         unless File.exists?(File.join(path, name))
-          f = File.open(File.join(path, name), "w")
+          f = File.open(File.join(path, name), "wb")
           begin
             http.request_get('/exdb/mnist/' + name) do |resp|
               resp.read_body do |segment|
@@ -196,7 +196,7 @@ module Mnist
       next if File.exists?(File.join(path, File.basename(name, '.gz')))
       puts "extracting #{name} ..."
       Zlib::GzipReader.open(File.join(path, name)) do |zipfile|
-        outfile = File.open(File.join(path, File.basename(name, '.gz')), 'w')
+        outfile = File.open(File.join(path, File.basename(name, '.gz')), 'wb')
         outfile.write(zipfile.read)
       end
     end
